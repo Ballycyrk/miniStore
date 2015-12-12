@@ -6,7 +6,7 @@
   <input class="btn btn-sm btn-success" type="submit" ng-click="addUser()" value="Join" ng-if="!(users | filter:name_filter | orderBy:'-created_at':false | filter:newUser.name).length > 0" />
 </form>
 <div class="row">
-  <h3 class="col-md-8 text-center bg-danger" ng-if="(users | filter:name_filter | orderBy:'-created_at':false | filter:newUser.name).length > 0 && (newUser.name)"><span ng-bind="newUser.name"></span> already exists! (So far anyway.) </h3>
+  <h3 class="col-md-8 text-center bg-danger" ng-if="(users | filter:name_filter | orderBy:'-created_at':false | filter:newUser.name).length > 0 && (newUser.name)">'<span ng-bind="newUser.name"></span>' already exists! (So far anyway.) </h3>
   <!-- <div class="col-md-4"> -->
     <input class="pull-right" ng-model="name_filter"
           placeholder="search by name...">

@@ -1,1 +1,19 @@
-<h1>Partial for material things passing hands</h1>
+<a href="#/users">Back to Members</a>
+<br>
+<h4>Add a new order</h4>
+<form class="form-inline">
+  <div class="form-group">
+    <label for="member">Member:</label>
+    <select class="form-control" ng-model="newOrder.member"
+            ng-options="user.name for user in users"></select>
+  </div>
+  <div class="form-group">
+    <label for="product">Product:
+    <input type="text" class="form-control" id="product" placeholder="jane.doe@example.com"/></label>
+  </div>
+  <div class="form-group">
+    <label for="qty">Qty:</label>
+    <input type="number" class="form-control" id="qty" ng-model="newOrder.qty">
+  </div>
+  <button type="submit" class="btn btn-primary" ng-click="addOrder()">Place Order</button>
+</form>

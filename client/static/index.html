@@ -48,11 +48,25 @@
       return factory;
     });
 
+    ballyCyrk.factory('productFactory', function(){
+      var products = [
+        {name: "Dingleberries"},
+        {name: "Sounders Jersey"},
+        {name: "XBox One"},
+        {name: "Nikon D7100"},
+        {name: "Intiman Theatre Subscription"}
+      ];
+      var factory = {};
+      factory.index = function(callback){ callback(products); };
+      return factory;
+    });
+
     ballyCyrk.factory('orderFactory', function(){
       var orders = [];
       var factory = {};
       factory.index = function(callback){ callback(orders); };
-    })
+      return factory;
+    });
 
 // -----------------CONTROLLERS-------------------
     ballyCyrk.controller('usersController', function($scope, userFactory){
@@ -69,13 +83,16 @@
       $scope.index();
     });
 
-    ballyCyrk.controller('ordersController', function($scope, orderFactory){
+    ballyCyrk.controller('ordersController', function($scope, orderFactory, userFactory, productFactory){
+      userFactory.index(function(data) { $scope.users = data });
+      productFactory.index(function(data) { $scope.products = data });
       orderFactory.index(function(data){ $scope.orders = data; });
     });
   </script>
 </head>
 <body>
   <div class="container">
+    <br>
     <div ng-view></div>
   </div>
 </body>
