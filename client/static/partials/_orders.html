@@ -8,8 +8,9 @@
             ng-options="user.name for user in users"></select>
   </div>
   <div class="form-group">
-    <label for="product">Product:
-    <input type="text" class="form-control" id="product" placeholder="jane.doe@example.com"/></label>
+    <label for="product">Product:</label>
+    <select class="form-control"  ng-model="newOrder.product"
+            ng-options="product.name for product in products"></select>
   </div>
   <div class="form-group">
     <label for="qty">Qty:</label>
@@ -17,3 +18,25 @@
   </div>
   <button type="submit" class="btn btn-primary" ng-click="addOrder()">Place Order</button>
 </form>
+<hr>
+<input class="pull-right" ng-model="order_filter"
+        placeholder="search orders...">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Member Name</th>
+      <th>Kick-ass Thing</th>
+      <th>Quantity</th>
+      <th>Date Ordered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="order in orders track by $index">
+      <td ng-bind="order.member.name"></td>
+      <td ng-bind="order.product.name"></td>
+      <td ng-bind="order.qty"></td>
+      <td ng-bind="order.created_at | date:'longDate'"></td>
+    </tr>
+  </tbody>
+</table>
+

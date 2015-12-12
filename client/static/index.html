@@ -36,7 +36,7 @@
       var users = [];
       var factory = {};
       factory.index = function(callback){ callback(users); };
-      factory.create = function(user, callback){
+      factory.create = function(user){
         user.created_at = new Date();
         users.push(user);
       };
@@ -65,6 +65,11 @@
       var orders = [];
       var factory = {};
       factory.index = function(callback){ callback(orders); };
+      factory.create = function(order){
+        order.created_at = new Date();
+        orders.push(order);
+        console.log(orders)
+      }
       return factory;
     });
 
@@ -75,7 +80,7 @@
       };
       $scope.addUser    = function(){
         userFactory.create($scope.newUser);
-        $scope.newUser = {};
+        $scope.newUser  = {};
       };
       $scope.deleteUser = function($user){
         userFactory.delete($user, $scope.index);
@@ -87,6 +92,10 @@
       userFactory.index(function(data) { $scope.users = data });
       productFactory.index(function(data) { $scope.products = data });
       orderFactory.index(function(data){ $scope.orders = data; });
+      $scope.addOrder = function(){
+        orderFactory.create($scope.newOrder);
+        $scope.newOrder = {};
+         };
     });
   </script>
 </head>
