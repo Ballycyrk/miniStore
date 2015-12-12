@@ -1,0 +1,7 @@
+{
+  "name": "miniStore",
+  "description": "A single page application to mimic a mini store.",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
